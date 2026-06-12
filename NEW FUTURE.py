@@ -3,7 +3,23 @@ import random
 import time
 
 
-def slow_print(text: str, delay: float = 0.02) -> None:
+class Color:
+    RED = "\033[31m"
+    GREEN = "\033[32m"
+    CYAN = "\033[36m"
+    YELLOW = "\033[33m"
+    MAGENTA = "\033[35m"
+    BLUE = "\033[34m"
+    WHITE = "\033[37m"
+    RESET = "\033[0m"
+
+
+def clear_screen() -> None:
+    """画面をざっくりクリア（Windowsコンソール向け）"""
+    print("\033[2J\033[H", end="")
+
+
+def slow_print(text: str, delay: float = 0.02, color: str = Color.RESET) -> None:
     """少しゆっくり表示して雰囲気を出す。delayを0にすれば高速表示。"""
     for ch in text:
         print(ch, end="", flush=True)
