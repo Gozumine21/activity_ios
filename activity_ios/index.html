@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="活動量計算">
+  <meta name="theme-color" content="#1a1a2e">
+  <title>活動量計算</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>活動量計算</h1>
+      <p>睡眠・食事・運動から、今日あとどれだけ動けるかを算出</p>
+    </header>
+
+    <main class="main">
+      <section class="card">
+        <label class="field">
+          <span>睡眠時間（時間）</span>
+          <input type="number" id="sleep" inputmode="decimal" value="7.5" min="0" max="24" step="0.5">
+        </label>
+        <label class="field">
+          <span>摂取カロリー（kcal）</span>
+          <input type="number" id="intake" inputmode="numeric" value="2000" min="0">
+        </label>
+        <label class="field">
+          <span>運動量の入力方法</span>
+          <select id="exerciseMode">
+            <option value="kcal">kcalで入力</option>
+            <option value="minutes">分で入力</option>
+          </select>
+        </label>
+        <label class="field" id="exerciseKcalField">
+          <span>運動で消費（kcal）</span>
+          <input type="number" id="exercise" inputmode="numeric" value="300" min="0">
+        </label>
+        <label class="field hidden" id="exerciseMinutesField">
+          <span>運動時間（分）</span>
+          <input type="number" id="exerciseMinutes" inputmode="numeric" value="30" min="0">
+        </label>
+        <label class="field hidden" id="exerciseIntensityField">
+          <span>運動の強さ</span>
+          <select id="exerciseIntensity">
+            <option value="軽い">軽い（散歩など）</option>
+            <option value="中程度" selected>中程度（ジョギングなど）</option>
+            <option value="激しい">激しい（HIITなど）</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>体重（kg）</span>
+          <input type="number" id="weight" inputmode="decimal" value="65" min="0" step="0.1">
+        </label>
+        <label class="field">
+          <span>身長（cm）</span>
+          <input type="number" id="height" inputmode="decimal" value="170" min="0">
+        </label>
+        <label class="field">
+          <span>年齢</span>
+          <input type="number" id="age" inputmode="numeric" value="30" min="1" max="120">
+        </label>
+        <label class="field">
+          <span>性別</span>
+          <select id="sex">
+            <option value="男性">男性</option>
+            <option value="女性">女性</option>
+          </select>
+        </label>
+      </section>
+
+      <button type="button" class="btn-calc" id="calcBtn">計算する</button>
+
+      <section class="card result" id="result">
+        <p class="placeholder">上の項目を入力して「計算する」を押してください。</p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>iPhone: Safariで開き → 共有 → ホーム画面に追加</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
